@@ -10,7 +10,7 @@ res = zeros(rows, cols);
 start =  mod(rows, fsize);
 offset = fsize - start; %offset depends on stride size, wow
 for r = start:rows-start
-q16    mean = 0;
+    mean = 0;
     for c = start:cols-start
         res(r, c) = mean2(I2(r-offset:r+offset, c-offset:c+offset));
     end
