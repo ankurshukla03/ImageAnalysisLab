@@ -1,4 +1,4 @@
-% convolution
+% sobel script
 
 Cman = imread('images/cameraman.png');
 Wagon = imread('images/wagon.png');
