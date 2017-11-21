@@ -1,20 +1,18 @@
-% FFT cameraman
-Cman = imread('images/cameraman.png');
-Cman = double(Cman);
+Img = imread('images/cameraman.png');
+F_Img = fft2(double(I));
+F_orig = fftshift(F_Img);
 
-I2 = fft2(Cman);
-% I3 = fftshift(I2);
-% I3 = abs(I3);
-% I3 = log(I3);
-% 
-[rows, cols] = size(I3);
-result = uint8(zeros(rows, cols));
+[rows, cols] = size(Img);
 for r = 1:rows
     for c = 1:cols
-        result(r, c) = uint8(I3(r,c) < 0);
+        if abs(F_orig(r, c)) < 10000
+            F_orig(r, c) = 0;
+        end
     end
 end
 
-imagesc(result);
-pause;
-imagesc(ifft2(result));
+result = ifftshift(F_orig);
+result = ifft2(result);
+
+subplot(1,2,1); imagesc(Img);
+subplot(1,2,2); imagesc(result);
