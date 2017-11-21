@@ -1,0 +1,32 @@
+2 - low pass filter is smoothing an image
+high pass filter is sharpening an image
+read more about this by googling high pass vs low pass
+
+11 - The Fourier Transform is used if we want to access the geometric characteristics of a spatial domain image. 
+Because the image in the Fourier domain is decomposed into its sinusoidal components, it is easy to examine or
+ process certain frequencies of the image, thus influencing the geometric structure in the spatial domain.
+
+In most implementations the Fourier image is shifted in such a way that the DC-value (i.e. the image mean)
+ F(0,0) is displayed in the center of the image. The further away from the center an image point is,
+ the higher is its corresponding frequency. 
+
+ For cameraman
+ The result shows that the image contains components of all frequencies, but that their magnitude gets smaller
+  for higher frequencies. Hence, low frequencies contain more image information than the higher ones. 
+  The transform image also tells us that there are mreo than two dominating directions in the Fourier image, 
+   passing through the center. These originate from the regular patterns in the background of the original image. 
+
+ For rectangle
+ 	The result shows that the image contains components of all frequencies, but that their magnitude gets smaller 
+ 	for higher frequencies. Hence, low frequencies contain more image information than the higher ones. 
+ The transform image also tells us that there are two dominating directions in the Fourier image, one passing vertically
+  and one horizontally through the center. These originate from the regular patterns in the background of the original 
+  image. 
+
+  12 - fftshift(fft(rand(1,5)))
+  	Swap the left and right halves of a row vector. 
+  	If a vector has an odd number of elements, then the middle element is considered part of the left half of the vector.
+
+  	fftshift(fft(rand(1,6)))
+  	Swap the left and right halves of a row vector. 
+  	If a vector has an even number of elements, then we just swap left and right halves
