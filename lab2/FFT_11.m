@@ -1,4 +1,4 @@
- I = imread('cameraman.png');
+ I = imread('images/cameraman.png');
  I2 = double(I);
  
  p=1
