@@ -1,5 +1,5 @@
-rows = 2
-cols = 3
+rows = 2;
+cols = 3;
 
 I = imread('data/hand.pnm'); 
 
@@ -8,7 +8,7 @@ subplot(rows, cols, 1); imshow(I);
 % Separate the three layers, RGB
 R = I(:,:,1);
 G = I(:,:,2);
-B = I2(:,:,3);
+B = I(:,:,3);
 subplot(rows, cols, 2); plot3(R(:),G(:),B(:),'.')
 
 label_im = imread('data/hand_training.png');
