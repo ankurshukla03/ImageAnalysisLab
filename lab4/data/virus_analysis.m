@@ -20,7 +20,7 @@ stepSize = 10;
 ccimg = templatematching(I,template,stepSize);
 
 % Show the resulting correlation image
-%figure('name','correlation coefficients');imshow(ccimg,[]);colormap(copper);colorbar;
+figure('name','correlation coefficients');imshow(ccimg,[]);colormap(copper);colorbar;
 
 
 %% Find localmaxima in the correlation image
@@ -117,6 +117,10 @@ keep('I','template','mask','cutouts','nrOfObjects');%'objectMap');
 
 % Place for your own texture analysis. 
 
+CoMat = graycomatrix(template,'Offset',[2 2]);
+bin = [1:length(cutouts)];
+for i = 1:length(cutouts)
+    bin(i) = CoMat * cutouts{i};
+end
 
-
-
+imshow(hist(bin));
