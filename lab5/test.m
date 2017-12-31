@@ -1,7 +1,8 @@
 clearvars;
 
 % Img = imread('imagedata/train_0070.png'); % 201
-Img = imread('imagedata/train_0084.png'); % 221
+% Img = imread('imagedata/train_0084.png'); % 221
+% Img = imread('imagedata/train_0286.png'); % 122
 % Img = imread('imagedata/train_1157.png'); % 012
 % Img = imread('imagedata/train_1153.png'); % 210
 % Img = imread('imagedata/train_1154.png'); % 112
@@ -37,7 +38,7 @@ if (propCount == 1)
     nums{1} = imcrop(nums{1}, [1,      1, w/3  , h]);
 elseif (propCount == 2)
     % figure out which is wider and split it.
-    if (size(nums{1}, 1) >= size(nums{2}, 1)) 
+    if (size(nums{1}, 2) >= size(nums{2}, 2)) 
         % split first image
         coord = size(nums{1});
         w = coord(1);

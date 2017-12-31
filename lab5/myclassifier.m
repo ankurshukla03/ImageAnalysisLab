@@ -39,7 +39,7 @@ if (propCount == 1)
     nums{1} = imcrop(nums{1}, [1,      1, w/3  , h]);
 elseif (propCount == 2)
     % figure out which is wider and split it.
-    if (size(nums{1}, 1) > size(nums{2}, 1)) 
+    if (size(nums{1}, 2) >= size(nums{2}, 2)) 
         % split first image
         coord = size(nums{1});
         w = coord(1);
@@ -59,8 +59,6 @@ elseif (propCount == 2)
         % half the size of 2
         nums{2} = imcrop(nums{2}, [1,   1, w/2, h]);
     end
-    % split the box into 2
-    
 elseif (propCount > 3)
     % oh no
     'more than three!?';
