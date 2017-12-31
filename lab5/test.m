@@ -1,5 +1,8 @@
 clearvars;
 
+<<<<<<< HEAD
+Img = imread('imagedata/train_0057.png'); % 012
+=======
 % Img = imread('imagedata/train_0070.png'); % 201
 % Img = imread('imagedata/train_0084.png'); % 221
 % Img = imread('imagedata/train_0286.png'); % 122
@@ -7,6 +10,7 @@ clearvars;
 % Img = imread('imagedata/train_1153.png'); % 210
 % Img = imread('imagedata/train_1154.png'); % 112
 % Img = imread('imagedata/train_1089.png'); % 102
+>>>>>>> 6de86dba04993d26316c870cd16b732fda4a0c39
 
 thresh = 0.2; %graythresh(Img);
 Img = ~im2bw(Img, thresh);
