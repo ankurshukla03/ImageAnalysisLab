@@ -1,26 +1,20 @@
+clearvars;
 Img = imread('imagedata/train_0582.png');
 
-thresh = graythresh(Img);
-Img = im2bw(Img, thresh);
+thresh = 0.2; %graythresh(Img);
+Img = ~im2bw(Img, thresh);
 
 % mean filter
-Img = imfilter(Img, ones(5,5)./25);
-
-% close elements
-Img = bwmorph(Img, 'close');
+Img = imfilter(Img, ones(5,5)./(5^2));
 
 Dist_Img = bwdist(~Img);
 Dist_Img = -Dist_Img;
 
-Ws_Img = watershed(Dist_Img);
-Ws_Img(~Img) = 0;
-
-Lb_Img = bwlabel(Ws_Img,8);
+Lb_Img = bwlabel(Img);
 
 rows = 1;
-cols = 4;
+cols = 3;
 subplot(rows,cols,1), imshow(Img);
 subplot(rows,cols,2), imagesc(Dist_Img);
-subplot(rows,cols,3), imshow(label2rgb(Ws_Img, 'spring'));
-subplot(rows,cols,4), imshow(label2rgb(Lb_Img, 'spring'));
+subplot(rows,cols,3), imshow(label2rgb(Lb_Img, 'spring'));
 
