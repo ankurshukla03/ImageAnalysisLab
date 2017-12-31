@@ -1,5 +1,6 @@
 clearvars;
-Img = imread('imagedata/train_1177.png');
+
+Img = imread('imagedata/train_1157.png'); % 012
 
 
 thresh = 0.2; %graythresh(Img);
@@ -48,16 +49,24 @@ for i=1:length(nums)
     % -----
     % 3 | 4
     tmp = ~~nums{i};
-    I1=sum(sum(tmp(1:size(tmp,1)/2,1:size(tmp,2)/2)));
-    I2=sum(sum(tmp(size(tmp,1)/2+1:size(tmp,1),1:size(tmp,2)/2)));
-    I3=sum(sum(tmp(1:size(tmp,1)/2,size(tmp,2)/2+1:size(tmp,2))));
-    I4=sum(sum(tmp(size(tmp,1)/2+1:size(tmp,1),size(tmp,2)/2+1:size(tmp,2))));
-    if (I1+I3 > I2 +I4)
+%     w = size(tmp,1);
+%     h = size(tmp,2);
+%     halfX = floor(w/2);
+%     halfY = floor(h/2);
+%     I1=sum(sum( tmp(1 : halfX   , 1     : halfY)));
+%     I2=sum(sum( tmp(halfX+1 : w , 1     : halfY)));
+%     I3=sum(sum( tmp(1 : halfX,   halfY+1:h)));
+%     I4=sum(sum( tmp(halfX+1 : w ,halfY+1 : h)));
+    tProps = regionprops(tmp, 'Orientation');
+%     i
+    E = tProps.Orientation;
+    % E
+    if (E > 88)
+        ret(i) = 0;
+    elseif (E < 0)
         ret(i) = 1;
-    elseif ((I2 + I3) > (I1 + I4))
-        ret(i)=2;
     else
-        ret(i)=0;
+        ret(i)=2;
     end
 end
 
