@@ -1,6 +1,7 @@
 clearvars;
 Img = imread('imagedata/train_1191.png');
 
+Img = imread('imagedata/train_1199.png');
 thresh = 0.2; %graythresh(Img);
 Img = ~im2bw(Img, thresh);
 
