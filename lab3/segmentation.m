@@ -1,8 +1,8 @@
 % Segmentation
 
 % read image
-Img = imread('bacteria.tif');
-% Img = imread('coins.tif');
+% Img = imread('bacteria.tif');
+Img = imread('coins.tif');
 % Img = Img(1:200,101:300); %smaller image, 14 coins
 
 % mean filter, clean noise
@@ -17,15 +17,15 @@ Bw_Img = bwmorph(Bw_Img, 'close');
 
 % distance
 Dist_Img = bwdist(~Bw_Img);
-Dist_Img = imfilter(Dist_Img,[1 1 1; 1 1 1; 1 1 1]./9);
+% Dist_Img = imfilter(Dist_Img,[1 1 1; 1 1 1; 1 1 1]./9);
 
 % complement
 Dist_Img = -Dist_Img;
-Dist_Img(~Bw_Img) = -Inf;
+%Dist_Img(~Bw_Img) = -Inf;
 
 % watershed
 Ws_Img = watershed(Dist_Img);
-% Ws_Img(~Bw_Img) = 0;
+Ws_Img(~Bw_Img) = 0;
 
 % label segments
 Lb_Img = Ws_Img; % bwlabel(Ws_Img);

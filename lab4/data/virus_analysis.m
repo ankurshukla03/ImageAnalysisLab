@@ -117,10 +117,12 @@ keep('I','template','mask','cutouts','nrOfObjects');%'objectMap');
 
 % Place for your own texture analysis. 
 
-CoMat = graycomatrix(template,'Offset',[2 2]);
-bin = [1:length(cutouts)];
+CoMat = graycomatrix(template,'Offset',[5 5]);
+Ent = [1:length(cutouts)];
+StDev = [1:length(cutouts)];
 for i = 1:length(cutouts)
-    bin(i) = CoMat * cutouts{i};
+    Ent(i) = entropy(cutouts{i});
+    StDev(i) = std(double(cutouts{i}));
 end
 
-imshow(hist(bin));
+imshow(scatter(Ent',[1:length(Ent)]))
