@@ -1,8 +1,8 @@
 % Segmentation
 
 % read image
-Img = imread('bacteria.tif');
-% Img = imread('coins.tif');
+%Img = imread('bacteria.tif');
+ Img = imread('coins.tif');
 % Img = Img(1:200,101:300); %smaller image, 14 coins
 
 % mean filter, clean noise
