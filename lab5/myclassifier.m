@@ -8,6 +8,8 @@ function S = myclassifier(im)
 %on average, approx. a 4% chance of guessing the correct answer. 
 %
 
+
+
 S = floor(rand(1,3)*3);
 end
 
