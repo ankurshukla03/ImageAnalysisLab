@@ -1,6 +1,7 @@
 clearvars;
 
-Img = imread('imagedata/train_0070.png'); % 012
+% Img = imread('imagedata/train_0070.png'); % 201
+Img = imread('imagedata/train_0084.png'); % 221
 % Img = imread('imagedata/train_1157.png'); % 012
 % Img = imread('imagedata/train_1153.png'); % 210
 % Img = imread('imagedata/train_1154.png'); % 112
@@ -20,11 +21,12 @@ Comps = bwconncomp(Lb_Img);
 props = regionprops(Comps,'BoundingBox');
 
 nums = {};
-for i=1:numel(props)
+propCount = numel(props);
+for i=1:propCount
     nums{i} = imcrop(Lb_Img, props(i).BoundingBox);
 end
 
-if (length(nums) == 1)
+if (propCount == 1)
     coord = size(nums{1});
     w = coord(1);
     h = coord(2);
@@ -33,15 +35,29 @@ if (length(nums) == 1)
     nums{3} = imcrop(nums{1}, [w/3 * 2 1, w    , h]);
     % third the size of 1
     nums{1} = imcrop(nums{1}, [1,      1, w/3  , h]);
-elseif (length(nums) == 2)
-    % split the box into 2
-    coord = size(nums{2});
-    w = coord(1);
-    h = coord(2);
-    nums{3} = imcrop(nums{2}, [w/2, 1, w,   h]);
-    % half the size of 2
-    nums{2} = imcrop(nums{2}, [1,   1, w/2, h]);
-elseif (length(nums) > 3)
+elseif (propCount == 2)
+    % figure out which is wider and split it.
+    if (size(nums{1}, 1) >= size(nums{2}, 1)) 
+        % split first image
+        coord = size(nums{1});
+        w = coord(1);
+        h = coord(2);
+        % move 2 to 3.
+        nums{3} = nums{2};
+        % split 1 into 2
+        nums{2} = imcrop(nums{1}, [w/2, 1, w,   h]);
+        % half the size of 1
+        nums{1} = imcrop(nums{1}, [1,   1, w/2, h]);
+    else 
+        % split second image
+        coord = size(nums{2});
+        w = coord(1);
+        h = coord(2);
+        nums{3} = imcrop(nums{2}, [w/2, 1, w,   h]);
+        % half the size of 2
+        nums{2} = imcrop(nums{2}, [1,   1, w/2, h]);
+    end
+elseif (propCount > 3)
     % oh no
     'more than three!?';
 end
