@@ -1,4 +1,4 @@
-Img = imread('imagedata/train_0582.png');
+Img = imread('imagedata/train_1199.png');
 
 thresh = graythresh(Img);
 Img = im2bw(Img, thresh);
