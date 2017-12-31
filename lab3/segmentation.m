@@ -12,7 +12,7 @@ Img = imfilter(Img,[1 1 1; 1 1 1; 1 1 1]./9);
 thresh = .3; %graythresh(Img);
 Bw_Img = ~im2bw(Img, thresh);
 
-% close holes 
+% close holes
 Bw_Img = bwmorph(Bw_Img, 'close');
 
 % distance
