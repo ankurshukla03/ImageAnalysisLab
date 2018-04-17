@@ -1,7 +1,7 @@
 clearvars;
 
 
-% Img = imread('imagedata/train_0070.png'); % 201
+ Img = imread('imagedata/train_0070.png'); % 201
 % Img = imread('imagedata/train_0084.png'); % 221
 % Img = imread('imagedata/train_0286.png'); % 122
 % Img = imread('imagedata/train_1157.png'); % 012
